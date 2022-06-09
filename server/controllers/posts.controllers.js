@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import fs from 'fs';
+import imageUpload from '../libs/imgurUpload.js';
 import Post from '../models/Post.js';
 
 export const getPosts = async (req, res) => {
@@ -10,10 +12,23 @@ export const getPosts = async (req, res) => {
   }
 };
 
+// TODO: fix upload when client specifies content-type
 export const createPost = async (req, res) => {
   try {
     const { title, description } = req.body;
-    const newPost = new Post({ title, description });
+
+    let image = null;
+
+    if (req.files.image) {
+      const result = await imageUpload(req.files.image.tempFilePath, title, description);
+      fs.unlinkSync(req.files.image.tempFilePath);
+      image = {
+        url: result.data.link,
+        public_id: result.data.id,
+      };
+    }
+
+    const newPost = new Post({ title, description, image });
     await newPost.save();
     return res.json(newPost);
   } catch (error) {
