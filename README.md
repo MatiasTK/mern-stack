@@ -7,6 +7,8 @@ I made this project to practise my mern knowledges.
 * Express
 * React
 * Mongodb & Mongoose
+* React
+* TailwindCSS
 
 ## Things that can be fixed
 
