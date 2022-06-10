@@ -1,10 +1,9 @@
 module.exports = {
   env: {
-    browser: true,
+    browser: false,
     es2021: true,
   },
   extends: [
-    'plugin:react/recommended',
     'airbnb',
   ],
   parserOptions: {
@@ -15,7 +14,6 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
-    'react',
   ],
   rules: {
     'import/extensions': 'off',

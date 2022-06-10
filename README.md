@@ -8,6 +8,14 @@ I made this project to practise my mern knowledges.
 * React
 * Mongodb & Mongoose
 
+## Things that can be fixed
+
+- Using Typescript.
+- Data validation(Joi)
+- Express validator
+- Unit Testing (Jest)
+- E2E Testing (Cypress)
+
 ## Links
 
 [Youtube Video](https://www.youtube.com/watch?v=zm5gpipw3HM)
