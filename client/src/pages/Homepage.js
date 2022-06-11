@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { useEffect } from 'react';
 import { VscEmptyWindow } from 'react-icons/vsc';
+import { Link } from 'react-router-dom';
 import { usePosts } from '../context/postContext';
 
 export default function Homepage() {
@@ -21,6 +22,9 @@ export default function Homepage() {
 
   return (
     <div className="text-white">
+
+      <Link to="/new" className="text-red-700">Create new Post</Link>
+
       {posts.map((post) => (
         <div key={post._id}>
           {post.title}

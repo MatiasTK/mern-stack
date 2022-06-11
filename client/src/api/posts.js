@@ -1,5 +1,9 @@
 import axios from 'axios';
 
-export default function getPostsRequests() {
+export function getPostsRequests() {
   return axios.get('/posts');
+}
+
+export function createPostRequest(post) {
+  return axios.post('/posts', post);
 }
