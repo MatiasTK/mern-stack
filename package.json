@@ -1,11 +1,12 @@
 {
-  "name": "mern-restaurant-review",
+  "name": "mern-stack",
   "version": "1.0.0",
   "description": "I made this project to practise my mern knowledges.",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server/index.js"
+    "dev": "nodemon server/index.js",
+    "start": "node server/index.js"
   },
   "keywords": [],
   "author": "",

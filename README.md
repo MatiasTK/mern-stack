@@ -1,6 +1,6 @@
 # MERN PROJECT
 
-I made this project to practise my mern knowledges.
+I made this project to practise my MERN knowledges.
 
 ## Technologies used
 
@@ -17,7 +17,7 @@ I made this project to practise my mern knowledges.
 - Express validator
 - Unit Testing (Jest)
 - E2E Testing (Cypress)
-
+- Use Docker
 ## Links
 
 [Youtube Video](https://www.youtube.com/watch?v=zm5gpipw3HM)
