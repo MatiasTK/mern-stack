@@ -19,7 +19,7 @@ export const createPost = async (req, res) => {
 
     let image = null;
 
-    if (req.files.image) {
+    if (req.files) {
       const result = await imageUpload(req.files.image.tempFilePath, title, description);
       fs.unlinkSync(req.files.image.tempFilePath);
       image = {
