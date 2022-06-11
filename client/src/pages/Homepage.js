@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { VscEmptyWindow } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
+import PostCard from '../components/PostCard';
 import { usePosts } from '../context/postContext';
 
 export default function Homepage() {
@@ -25,11 +26,11 @@ export default function Homepage() {
 
       <Link to="/new" className="text-red-700">Create new Post</Link>
 
-      {posts.map((post) => (
-        <div key={post._id}>
-          {post.title}
-        </div>
-      ))}
+      <div className="grid grid-cols-3 gap-2">
+        {posts.map((post) => (
+          <PostCard post={post} key={post._id} />
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
 export function getPostsRequests() {
@@ -6,4 +7,8 @@ export function getPostsRequests() {
 
 export function createPostRequest(post) {
   return axios.post('/posts', post);
+}
+
+export function deletePostRequest(post) {
+  return axios.delete(`/posts/${post._id}`);
 }
