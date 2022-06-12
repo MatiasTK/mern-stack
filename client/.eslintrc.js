@@ -15,7 +15,6 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
-    'react',
   ],
   rules: {
     'react/jsx-filename-extension': 'off', /* To fix import problems */
