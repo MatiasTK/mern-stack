@@ -20,6 +20,4 @@ I made this project to practise my MERN knowledges.
 - Use Docker
 ## Links
 
-[Youtube Video](https://www.youtube.com/watch?v=zm5gpipw3HM)
-
-[Github Repo](https://github.com/FaztWeb/mern-context-crud)
+[Heroku Demo](https://mern-stack-matiastk.herokuapp.com/)
