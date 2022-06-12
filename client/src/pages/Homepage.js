@@ -9,16 +9,26 @@ export default function Homepage() {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [getPosts]);
 
-  if (posts.length === 0) {
+  const renderMain = () => {
+    if (posts.length === 0) {
+      return (
+        <div className="flex flex-col justify-center items-center">
+          <VscEmptyWindow className="w-48 text-white h-48" />
+          <h1 className="text-white text-2xl">There are no posts yet</h1>
+        </div>
+      );
+    }
+
     return (
-      <div className="flex flex-col justify-center items-center">
-        <VscEmptyWindow className="w-48 text-white h-48" />
-        <h1 className="text-white text-2xl">There are no posts yet</h1>
+      <div className="grid grid-cols-3 gap-2">
+        {posts.map((post) => (
+          <PostCard post={post} key={post._id} />
+        ))}
       </div>
     );
-  }
+  };
 
   return (
     <div className="text-white">
@@ -34,11 +44,7 @@ export default function Homepage() {
         </Link>
       </header>
 
-      <div className="grid grid-cols-3 gap-2">
-        {posts.map((post) => (
-          <PostCard post={post} key={post._id} />
-        ))}
-      </div>
+      {renderMain()}
     </div>
   );
 }

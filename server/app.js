@@ -18,6 +18,11 @@ export default function startExpress() {
 
   app.use(express.static(join(__dirname, '../client/build')));
 
+  // Fix heroku paths
+  app.get('*', (req, res) => {
+    res.sendFile(join(__dirname, '../client/build/index.html'))
+  });
+
   app.listen(PORT || 4000, () => {
     console.log(`Server is running on port: ${PORT || 4000}`);
   });
