@@ -5,7 +5,17 @@ export function getPostsRequests() {
 }
 
 export function createPostRequest(post) {
-  return axios.post('/posts', post);
+  const form = new FormData();
+
+  Object.keys(post).forEach((key) => {
+    form.append(key, post[key]);
+  });
+
+  return axios.post('/posts', form, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 }
 
 export function deletePostRequest(post) {

@@ -44,7 +44,7 @@ export default function PostCard({ post }) {
           navigate(`/posts/${post._id}`);
         }
       }}
-      className="bg-zinc-800 text-white rounded-sm shadow-md shadow-black hover:bg-zinc-700 hover:cursor-pointer"
+      className="bg-zinc-800 text-white rounded-sm shadow-md shadow-black hover:bg-zinc-700 hover:cursor-pointer h-96"
       onClick={(e) => {
         // Avoid aplying it to delete button
         if (e.target.type !== 'button') {
@@ -52,14 +52,17 @@ export default function PostCard({ post }) {
         }
       }}
     >
-      <div className="px-4 py-7 h-full">
-        <div className="flex flex-col justify-between items-center">
-          <h3>{post.title}</h3>
-          <p>{post.description}</p>
+      <div className="px-4 py-4 h-full">
+        <div className="mb-4 min-h-[80%]">
+          <div className="flex flex-col justify-between items-center">
+            <h3 className="font-bold text-lg mb-4">{post.title}</h3>
+            <p className="mb-4">{post.description}</p>
+          </div>
+          {post.image && <img src={post.image.url} alt="Imagen del post" />}
         </div>
         <button
           type="button"
-          className="bg-red-600 text-sm px-2 py-1 rounded-sm"
+          className="bg-red-600 text-sm px-2 py-1 rounded-sm w-full mb-2"
           onClick={() => handleDelete(post._id)}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
