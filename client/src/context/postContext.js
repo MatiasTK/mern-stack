@@ -2,7 +2,9 @@ import {
   createContext, useContext, useMemo, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { getPostsRequests, createPostRequest, deletePostRequest } from '../api/posts';
+import {
+  getPostsRequests, createPostRequest, deletePostRequest, getPostRequest, updatePostRequest,
+} from '../api/posts';
 
 /* Contextos: Son estados globales que pueden usar muchos componentes. */
 const postContext = createContext();
@@ -30,9 +32,19 @@ export function PostProvider({ children }) {
     getPosts();
   };
 
+  const getPost = async (id) => {
+    const res = await getPostRequest(id);
+    return res.data;
+  };
+
+  const updatePost = async (originalId, newPost) => {
+    await updatePostRequest(originalId, newPost);
+    getPosts();
+  };
+
   // To fix linter error.
   const memo = useMemo(() => ({
-    posts, setPosts, getPosts, createPost, deletePost,
+    posts, setPosts, getPosts, createPost, deletePost, getPost, updatePost,
   }), [posts]);
 
   return (
@@ -46,5 +58,5 @@ export function PostProvider({ children }) {
 
 // To fix linter error.
 PostProvider.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };

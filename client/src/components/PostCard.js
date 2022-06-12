@@ -1,10 +1,11 @@
-/* eslint-disable no-underscore-dangle */
 import Proptypes from 'prop-types';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { usePosts } from '../context/postContext';
 
 export default function PostCard({ post }) {
   const { deletePost } = usePosts();
+  const navigate = useNavigate();
 
   const handleDelete = (_id) => {
     toast((t) => (
@@ -35,7 +36,22 @@ export default function PostCard({ post }) {
   };
 
   return (
-    <div className="bg-zinc-800 text-white rounded-sm shadow-md shadow-black hover:bg-zinc-700 hover:cursor-pointer">
+    <div
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' && e.target.type !== 'button') {
+          navigate(`/posts/${post._id}`);
+        }
+      }}
+      className="bg-zinc-800 text-white rounded-sm shadow-md shadow-black hover:bg-zinc-700 hover:cursor-pointer"
+      onClick={(e) => {
+        // Avoid aplying it to delete button
+        if (e.target.type !== 'button') {
+          navigate(`/posts/${post._id}`);
+        }
+      }}
+    >
       <div className="px-4 py-7 h-full">
         <div className="flex flex-col justify-between items-center">
           <h3>{post.title}</h3>
@@ -45,6 +61,11 @@ export default function PostCard({ post }) {
           type="button"
           className="bg-red-600 text-sm px-2 py-1 rounded-sm"
           onClick={() => handleDelete(post._id)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleDelete(post._id);
+            }
+          }}
         >
           Delete
         </button>
@@ -54,5 +75,14 @@ export default function PostCard({ post }) {
 }
 
 PostCard.propTypes = {
-  post: Proptypes.element.isRequired,
+  post: Proptypes.shape({
+    title: Proptypes.string,
+    description: Proptypes.string,
+    _id: Proptypes.string,
+    image: Proptypes.shape({
+      url: Proptypes.string,
+      public_id: Proptypes.string,
+    }),
+    __v: Proptypes.number,
+  }).isRequired,
 };

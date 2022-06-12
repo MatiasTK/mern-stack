@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { useEffect } from 'react';
 import { VscEmptyWindow } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';

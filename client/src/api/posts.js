@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
 export function getPostsRequests() {
@@ -11,4 +10,12 @@ export function createPostRequest(post) {
 
 export function deletePostRequest(post) {
   return axios.delete(`/posts/${post._id}`);
+}
+
+export function getPostRequest(id) {
+  return axios.get(`/posts/${id}`);
+}
+
+export function updatePostRequest(id, newPost) {
+  return axios.put(`/posts/${id}`, newPost);
 }

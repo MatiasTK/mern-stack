@@ -12,6 +12,7 @@ export default function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/new" element={<Postform />} />
             <Route path="*" element={<Notfound />} />
+            <Route path="/posts/:id" element={<Postform />} />
           </Routes>
           <Toaster />
         </PostProvider>
